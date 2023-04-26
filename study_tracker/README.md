@@ -43,3 +43,6 @@ Tugas 7
 3.  - Membuat program study_tracker dengan "flutter create study_tracker" pada terminal
     - Membuat widget "Lihat Study Tracker", "Tambah Tugas", dan "Logout" di dalam widget GridView.count menggunakan widget Material
     - Membuat snackbar untuk setiap tombol menggunakan function onTap()
+
+
+BONUS: Saya mengimplementasikan warna yang berbeda yaitu abu-abu pada setiap tombol dan primarySwatch, sebenarnya saya ingin menggunakan warna abu-abu yang lebih gelap untuk primarySwatch namun selalu merah (error).
