@@ -21,6 +21,17 @@ class DrawerMenu extends StatelessWidget {
               );
             },
           ),
+
+          ListTile(
+            title: const Text('Tambah Tugas'),
+            onTap: () {
+              // Route menu ke halaman utama
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MyFormPage()),
+              );
+            },
+          )
         ],
       ),
     );
