@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/drawer.dart';
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
@@ -14,6 +16,7 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+            drawer: const DrawerMenu(),
             body: SingleChildScrollView( // Widget wrapper yang dapat discroll
               child: Padding( 
                 padding: const EdgeInsets.all(10.0), // Set padding dari halaman
