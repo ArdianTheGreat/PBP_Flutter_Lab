@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../widgets/drawer.dart';
 
+import 'package:study_tracker/pages/form.dart';
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
@@ -15,6 +17,7 @@ class MyHomePage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              iconTheme: const IconThemeData(color: Colors.white),
             ),
             drawer: const DrawerMenu(),
             body: SingleChildScrollView( // Widget wrapper yang dapat discroll
@@ -80,6 +83,11 @@ class MyHomePage extends StatelessWidget {
                           color: Colors.grey,
                           child: InkWell(
                             onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const MyFormPage()),
+                              );
                               ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
                               ..showSnackBar(const SnackBar(
