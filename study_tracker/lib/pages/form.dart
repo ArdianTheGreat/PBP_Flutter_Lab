@@ -209,6 +209,10 @@ class _MyFormPageState extends State<MyFormPage> {
                                     children: <Widget>[
                                       Center(child: const Text('Informasi Data')),
                                       SizedBox(height: 20),
+                                      Text('Nama Transaksi: $_namaTugas'),
+                                      Text('Jenis: $_namaMataKuliah'),
+                                      Text('Total: $_persentaseProgress'+'%'),
+                                      Text('Deskripsi: $_deskripsiTugas'),
                                       // TODO: Munculkan informasi yang didapat dari form
                                       TextButton(
                                         onPressed: () {
