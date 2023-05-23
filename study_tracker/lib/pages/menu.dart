@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:study_tracker/pages/assignments.dart';
+import 'package:study_tracker/pages/login.dart';
 
 import '../widgets/drawer.dart';
 
@@ -8,6 +12,7 @@ class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
       Widget build(BuildContext context) {
+        final request = context.watch<CookieRequest>();
           return Scaffold(
             appBar: AppBar(
               // Set title aplikasi menjadi Money Tracker
@@ -50,6 +55,11 @@ class MyHomePage extends StatelessWidget {
                           color: Colors.grey,
                           child: InkWell( // Area responsive terhadap sentuhan
                             onTap: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AssignmentPage()),
+                              );  
                               // Memunculkan SnackBar ketika diklik
                               ScaffoldMessenger.of(context)
                               ..hideCurrentSnackBar()
@@ -119,12 +129,28 @@ class MyHomePage extends StatelessWidget {
                         Material(
                           color: Colors.grey,
                           child: InkWell(
-                            onTap: () {
-                              ScaffoldMessenger.of(context)
-                              ..hideCurrentSnackBar()
-                              ..showSnackBar(const SnackBar(
-                                content: Text("Kamu telah menekan tombol Logout!")));
+                            onTap: () async {
+                              final response = await request.logout(
+                                  // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                                "https://ardian-lab-pbp.domcloud.io/auth/logout/");
+                                String message = response["message"];
+                                if (response['status']) {
+                                    String uname = response["username"];
+                                    ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                                        content: Text("$message Sampai jumpa, $uname."),
+                                    ));
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                                    );
+                                }
+                                else {
+                                    ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                                    content: Text("$message"),
+                                ));
+                              }
                             },
+
                             child: Container(
                               padding: const EdgeInsets.all(8),
                               child: Center(

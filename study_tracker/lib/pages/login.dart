@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
 
                                 // Cek kredensial
                                 // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
-                                final response = await request.login("https://<APP_URL_KAMU>/auth/login/", {
+                                final response = await request.login("https://ardian-lab-pbp.domcloud.io/auth/login/", {
                                 'username': username,
                                 'password': password,
                                 });

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:study_tracker/pages/form.dart';
 
+import '../pages/assignments.dart';
+
 
 class DrawerMenu extends StatelessWidget {
 
@@ -34,7 +36,18 @@ class DrawerMenu extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const MyFormPage()),
               );
             },
-          )
+          ),
+
+          ListTile(
+            title: const Text('Informasi Tugas'),
+            onTap: () {
+                // Route menu ke halaman transaksi
+              Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const AssignmentPage()),
+              );
+            },
+          ),
         ],
       ),
     );
