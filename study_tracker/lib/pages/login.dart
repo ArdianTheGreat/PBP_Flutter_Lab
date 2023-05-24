@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                   ScaffoldMessenger.of(context)
                   ..hideCurrentSnackBar()
                   ..showSnackBar(
-                    SnackBar(content: Text("$message Selamat datang, $uname."))
+                  SnackBar(content: Text("$message Selamat datang, $uname."))
                   );
                 }
                 else {

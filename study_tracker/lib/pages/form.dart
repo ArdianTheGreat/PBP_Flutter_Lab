@@ -4,6 +4,7 @@ import 'package:study_tracker/pages/assignments.dart';
 import 'package:study_tracker/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 import 'dart:convert' as convert;
 
@@ -17,6 +18,7 @@ class MyFormPage extends StatefulWidget {
 class _MyFormPageState extends State<MyFormPage> {
   final _formKey = GlobalKey<FormState>();
   String _namaTugas = "";
+  DateTime _deadline = DateTime.now();
   String _namaMataKuliah = "";
   int _persentaseProgress = 0;
   String _deskripsiTugas = "";
@@ -68,6 +70,52 @@ class _MyFormPageState extends State<MyFormPage> {
                         return 'Nama tugas tidak boleh kosong!';
                       }
                       return null;
+                    },
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Deadline",
+                      icon: const Icon(Icons.calendar_today),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
+                    onTap: () async {
+                      DateTime? selectedDate = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime.now(),
+                        lastDate: DateTime(2100),
+                      );
+
+                      if (selectedDate != null) {
+                        setState(() {
+                          _deadline = selectedDate;
+                        });
+                      }
+                    },
+                    readOnly: true,
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Deadline harus diisi!';
+                      }
+                      return null;
+                    },
+                    controller: TextEditingController(
+                      text: _deadline != null
+                          ? DateFormat('yyyy-MM-dd').format(_deadline!)
+                          : '',
+                    ),
+                    onSaved: (value) {
+                      if (value != null) {
+                        setState(() {
+                          _deadline = DateTime.parse(value);
+                        });
+                      }
                     },
                   ),
                 ),
@@ -206,6 +254,7 @@ class _MyFormPageState extends State<MyFormPage> {
                       "https://ardian-lab-pbp.domcloud.io/tracker/create-flutter/",
                       convert.jsonEncode(<String, String>{
                         'name': _namaTugas,
+                        'date': _deadline.toString(),
                         'Subject': _namaMataKuliah,
                         'amount': _persentaseProgress.toString(),
                         'description': _deskripsiTugas
