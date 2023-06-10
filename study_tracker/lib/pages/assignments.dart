@@ -29,13 +29,13 @@ class _AssignmentPageState extends State<AssignmentPage> {
       var data = jsonDecode(utf8.decode(response.bodyBytes));
 
       // melakukan konversi data json menjadi object TransactionRecord
-      List<Assignment> listTransactionRecord = [];
+      List<Assignment> listAssignment = [];
       for (var d in data) {
           if (d != null) {
-              listTransactionRecord.add(Assignment.fromJson(d));
+              listAssignment.add(Assignment.fromJson(d));
           }
       }
-      return listTransactionRecord;
+      return listAssignment;
   }
 
   @override

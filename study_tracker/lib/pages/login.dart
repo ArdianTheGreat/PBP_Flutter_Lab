@@ -8,7 +8,7 @@ void main() {
 }
 
 class LoginApp extends StatelessWidget {
-const LoginApp({super.key});
+const LoginApp({Key? key}) : super(key: key);
 
 @override
 Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ Widget build(BuildContext context) {
 }
 
 class LoginPage extends StatefulWidget {
-    const LoginPage({super.key});
+    const LoginPage({Key? key}) : super(key: key);
 
     @override
     _LoginPageState createState() => _LoginPageState();
