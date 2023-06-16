@@ -74,7 +74,7 @@ class _MyFormPageState extends State<MyFormPage> {
                   ),
                 ),
 
-                Padding(
+/*                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: InputDecoration(
@@ -118,7 +118,7 @@ class _MyFormPageState extends State<MyFormPage> {
                       }
                     },
                   ),
-                ),
+                ), */
 
                 Padding(
             // Menggunakan padding sebesar 8 pixels
@@ -254,9 +254,8 @@ class _MyFormPageState extends State<MyFormPage> {
                       "https://ardian-lab-pbp.domcloud.io/tracker/create-flutter/",
                       convert.jsonEncode(<String, String>{
                         'name': _namaTugas,
-                        'date': _deadline.toString(),
-                        'Subject': _namaMataKuliah,
-                        'amount': _persentaseProgress.toString(),
+                        'subject': _namaMataKuliah,
+                        'progress': _persentaseProgress.toString(),
                         'description': _deskripsiTugas
                       }));
                       if (response['status'] == 'success') {

@@ -74,7 +74,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                       boxShadow: [
                       BoxShadow(
                         color:
-                          snapshot.data![index].fields.type == "PBP"
+                          snapshot.data![index].fields.subject == "PBP"
                             ? Colors.blueAccent
                             : Colors.red,
                           blurRadius: 2.0
@@ -93,7 +93,7 @@ class _AssignmentPageState extends State<AssignmentPage> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text("${snapshot.data![index].fields.amount}"),
+                      Text("${snapshot.data![index].fields.progress}"),
                     ],
                   ),
                 )
